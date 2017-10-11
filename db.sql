@@ -1,0 +1,17 @@
+CREATE DATABASE test;
+use test;
+
+CREATE TABLE  IF NOT EXISTS `users` (
+     `id`INT(10)  AUTO_INCREMENT ,
+    `name` VARCHAR(50) NOT NULL,
+    `email` VARCHAR(50) NOT NULL,   
+     `image` VARCHAR(50) NOT NULL,
+    PRIMARY KEY(`id`)
+) DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+CREATE TABLE  IF NOT EXISTS `address` (
+     `id`INT(10)  AUTO_INCREMENT ,
+    `address` VARCHAR(255) NOT NULL,
+    `phone` VARCHAR(255) NOT NULL,   
+    PRIMARY KEY(`id`)
+) DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
