@@ -11,7 +11,7 @@
 <div class="container" >
     <h2>Basic form</h2>
     <button type="button" id="next" class="btn btn-primary">next</button>
-    <form id="submitForm" action="/load" method="post" enctype="multipart/form-data" class="form-horizontal">
+    <form id="submitForm"  enctype="multipart/form-data" class="form-horizontal">
       
        <div class="form-group">
         <label class="control-label col-sm-2" for="name">Name:</label>
@@ -53,21 +53,24 @@
                    window.location.href="/next"
               })
               
-
-
+     
               $('#submitForm').on("submit",function(e){
-                e.preventDefault();
-              
-                $.ajax({
-                  method:"post",
-                  url:'/load',
-                  data:$(this).serialize(),
-                  success:function(response){
-                    //console.log(response);
-                    $('#table').append(response);
-                  }
-                })
-              })
+                       e.preventDefault();
+                        var form = new FormData($('#submitForm')[0]);
+                    $.ajax({
+                       url: "/load",
+                       method: "POST",
+                       data: form,
+                       processData: false,
+                       contentType: false,
+                       success: function(result){
+                         //console.log(result);
+                         $('#table').append(result);},
+                       error: function(er){}
+               });
+
+             })
+ 
           })
        
 

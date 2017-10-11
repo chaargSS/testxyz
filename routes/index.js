@@ -31,13 +31,13 @@ router.get('/next', function(req, res, next) {
 router.post('/load',upload.any(),function(req,res){
     
      console.log(req.body);
-     console.log(req.files);
-     //console.log(req.file);
+    console.log(req.files);
+     //console.log(req.files[0].originalname);
 
      var user={
        name:req.body.name,
        email:req.body.email,
-       image:'req.files.originalname'
+       image:req.files[0].originalname
      }
 
      connection.query(`INSERT INTO users SET ?`,user,function(err,result){
